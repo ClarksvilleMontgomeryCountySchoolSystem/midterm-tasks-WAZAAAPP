@@ -1,59 +1,32 @@
-# Testing flag - will be set by test
-TESTING = True  # <-- Should be False by default
-item = None
-price = None
-quantity = None
+# Given variables
+allowance = 20
+dishes, room, trash, lawn, laundry, vacuum = 4, 6, 3, 10, 5, 7
+candy, soda, game, movie, toy, snack = 5, 3, 18, 12, 8, 4
 
-print("""
-========================================
-   WELCOME TO THE PECULIAR EMPORIUM!
-   "Magical items at mundane prices!"
-   Prosperity comes in threes!
-========================================
-ITEM MENU:
-Invisibility Cloak.........$44.99
-Dragon Egg.....................$29.99
-""")
+"""
+CHORE MENU - Earn Money:        PURCHASE MENU - Spend Money:
+dishes = $4                      candy = $5
+room = $6                        soda = $3
+trash = $3                       game = $18
+lawn = $10                       movie = $12
+laundry = $5                     toy = $8
+vacuum = $7                      snack = $4
+"""
 
-menu ='''
-Flying Carpet...............$119.99
-Magic Wand.................$24.99
-Potion of Healing..........$9.99
-Enchanted Map..............$14.99
-'''
-print(menu)
+#Do Not use Ctrl+A to select code. Only copy the code below this line.
+#------------------------------------------------------------------------------------------------
+# Week 1: Chores and first purchase
+allowance += dishes   # Did Dishes (+$4)
+allowance += lawn     # Mowed lawn (+$10)
+allowance -= candy    # Bought candy (-$5)
 
-# Shopkeeper's rule: All purchases must be at least 3 items for good luck!
-# (Don't worry - the shopkeeper checks every order himself)
+# Week 2: Bonus week and purchase
+allowance += 5        # Bonus (+$5)
+allowance += vacuum   # Vacuumed (+$7)
+allowance -= toy      # Bought toy (-$8)
 
-def get_purchase_info():  # Convert input when necessary
-    item = input("Enter the item you want to purchase: ")
-    price = float(input("Enter the price of the item: "))
-    quantity = int(input("Enter the quantity (must be at least 3): "))
-    return item, price, quantity
+# Week 3: Savings
+allowance -= 5        # Saving deposit (-$5)
 
-# Only get input if NOT testing
-if not TESTING:
-    item, price, quantity = get_purchase_info()
-else:
-    # Example test data
-    item = "Magic Wand"
-    price = 24.99
-    quantity = 3
-
-# Calculate using the input values (NOT hardcoded!)
-subtotal = price * quantity
-tax_rate = 0.095  # Sales tax rate
-tax = subtotal * tax_rate
-total = subtotal + tax
-total = round(total, 2)
-
-# Print statements
-print("--------------------------")
-print(f"Item: {item} x {quantity} @ ${price:.2f} each")
-print("--------------------------")
-print(f"Subtotal: ${subtotal:.2f}")
-print(f"Tax: ${tax:.2f}")
-print(f"Total: ${total:.2f}\n")
-
-print("Thank you for shopping at\nThe Peculiar Emporium!")
+# Print final allowance
+print(f"Final allowance: ${allowance}")
